@@ -13,5 +13,7 @@ USER steam
 WORKDIR /home/steam
 RUN git clone https://aur.archlinux.org/steamcmd.git &&\
     cd steamcmd &&\
-    makepkg --syncdeps --install --needed --noconfirm
+    makepkg --syncdeps --install --needed --noconfirm &&\
+    mkdir /home/steam/.steam
+VOLUME /home/steam/.steam
 ENTRYPOINT ["sh", "-c", "steamcmd"]
